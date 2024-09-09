@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - chromadb
+    restart: always  # Adiciona reinício automático
+
+  chromadb:
+    image: chromadb/chromadb:latest
+    ports:
+      - "8000:8000"
+    restart: always  # Adiciona reinício automático
