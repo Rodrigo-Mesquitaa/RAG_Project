@@ -1,16 +1,16 @@
-from modules.pdf_reader import read_pdf
+from modules.file_reader import read_file
 from modules.text_processor import process_text, train_model
 from modules.chromadb_handler import store_data
 
 def main():
-    # Leitura do PDF
-    pdf_text = read_pdf("Politica_de_Privacidade.pdf")
-    if pdf_text is None:
-        print("Erro ao ler o PDF.")
+    # Leitura do arquivo (suporta PDF, DOCX, TXT)
+    file_text = read_file("Politica_de_Privacidade.pdf")  # Troque o arquivo aqui
+    if file_text is None:
+        print("Erro ao ler o arquivo.")
         return
     
-    # Processamento do texto extraído do PDF
-    processed_text = process_text(pdf_text)
+    # Processamento do texto extraído do arquivo
+    processed_text = process_text(file_text)
     if processed_text is None:
         print("Erro ao processar o texto.")
         return
